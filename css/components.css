@@ -1,7 +1,45 @@
+/* =========================
+   HEADINGS
+========================= */
+
 h1 {
 
-    margin-bottom: 20px;
+    font-size: 3rem;
+
+    margin-bottom: 15px;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(90deg,
+            #00e5ff,
+            #00ff95);
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
 }
+
+h2 {
+
+    margin-bottom: 15px;
+
+    font-size: 1.5rem;
+
+    font-weight: 600;
+}
+
+h3 {
+
+    margin-top: 15px;
+
+    font-size: 1.2rem;
+}
+
+
+/* =========================
+   SPINNER
+========================= */
 
 .spinner-container {
 
@@ -9,68 +47,323 @@ h1 {
 
     justify-content: center;
 
-    margin-top: 20px;
+    align-items: center;
+
+    margin: 30px 0;
 }
 
 .loader {
 
-    width: 50px;
-    height: 50px;
+    width: 60px;
 
-    border: 5px solid #ddd;
+    height: 60px;
 
-    border-top: 5px solid cyan;
+    border: 5px solid rgba(255, 255, 255, .15);
+
+    border-top: 5px solid #00e5ff;
 
     border-radius: 50%;
 
-    animation:
-        spin 1s linear infinite;
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
 
     100% {
 
-        transform:
-            rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
+
+/* =========================
+   FAVORITES
+========================= */
+
 .favorites {
 
-    margin-top: 40px;
+    margin-top: 30px;
 
-    background: #132238;
+    background:
+        rgba(255, 255, 255, 0.08);
 
-    padding: 20px;
+    backdrop-filter: blur(12px);
 
-    border-radius: 15px;
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    transition: .3s;
+}
+
+.favorites:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 229, 255, .15);
 }
 
 .favorites ul {
 
     list-style: none;
+
+    padding: 0;
+
+    margin-top: 10px;
 }
 
 .favorites li {
 
-    padding: 10px;
-    border-bottom: 1px solid #23374f;
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 12px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, .08);
+
+    transition: .3s;
 }
 
-#favBtn {
+.favorites li:hover {
 
-    margin-top: 15px;
+    background:
+        rgba(255, 255, 255, .05);
 
-    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+#favBtn,
+#themeToggle,
+#convertBtn {
+
+    padding: 12px 20px;
 
     border: none;
 
-    background: #00c853;
-
-    color: white;
-
-    border-radius: 10px;
+    border-radius: 12px;
 
     cursor: pointer;
+
+    font-weight: 600;
+
+    transition: .3s;
+
+    background:
+        linear-gradient(90deg,
+            #00e5ff,
+            #00ff95);
+
+    color: #000;
+}
+
+#favBtn:hover,
+#themeToggle:hover,
+#convertBtn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 229, 255, .25);
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input {
+
+    transition: .3s;
+}
+
+input:focus {
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, .4);
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.coin-card {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(12px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    transition: .3s;
+}
+
+.coin-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 229, 255, .2);
+}
+
+.coin-card img {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    margin: 0 auto 15px;
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.error {
+
+    color: #ff5252;
+
+    background:
+        rgba(255, 82, 82, .1);
+
+    border:
+        1px solid rgba(255, 82, 82, .2);
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    margin-top: 20px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   CHART CONTAINER
+========================= */
+
+.chart-section {
+
+    margin-top: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(12px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 20px;
+
+    padding: 25px;
+}
+
+
+/* =========================
+   WIDGETS
+========================= */
+
+.widget {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(12px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    transition: .3s;
+}
+
+.widget:hover {
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+.light-mode .favorites,
+.light-mode .coin-card,
+.light-mode .widget,
+.light-mode .chart-section {
+
+    background: white;
+
+    color: #111827;
+
+    border:
+        1px solid #e5e7eb;
+}
+
+.light-mode .favorites li {
+
+    border-bottom:
+        1px solid #e5e7eb;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    h1 {
+
+        font-size: 2rem;
+    }
+
+    h2 {
+
+        font-size: 1.25rem;
+    }
+
+    .coin-card {
+
+        padding: 20px;
+    }
+
+    #favBtn,
+    #themeToggle,
+    #convertBtn {
+
+        width: 100%;
+    }
 }
