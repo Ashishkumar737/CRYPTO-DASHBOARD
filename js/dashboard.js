@@ -329,3 +329,89 @@ async function loadMarketWidgets() {
       "<li>Unable to load losers</li>";
   }
 }
+/* =========================
+   USD TO INR CONVERTER
+========================= */
+
+const usdInput =
+  document.getElementById("usdInput");
+
+const convertBtn =
+  document.getElementById("convertBtn");
+
+const inrResult =
+  document.getElementById("inrResult");
+
+if (convertBtn) {
+
+  convertBtn.addEventListener(
+    "click",
+    () => {
+
+      const usd =
+        Number(
+          usdInput.value
+        );
+
+      if (!usd) {
+
+        inrResult.innerHTML =
+          "₹ 0.00";
+
+        return;
+      }
+
+      const inr =
+        usd * 83.5;
+
+      inrResult.innerHTML =
+        `₹ ${inr.toFixed(2)}`;
+    }
+  );
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+const themeToggle =
+  document.getElementById(
+    "themeToggle"
+  );
+
+if (themeToggle) {
+
+  themeToggle.addEventListener(
+    "click",
+    () => {
+
+      document.body.classList.toggle(
+        "light-mode"
+      );
+
+      localStorage.setItem(
+        "theme",
+        document.body.classList.contains(
+          "light-mode"
+        )
+          ? "light"
+          : "dark"
+      );
+    }
+  );
+
+  const savedTheme =
+    localStorage.getItem(
+      "theme"
+    );
+
+  if (
+    savedTheme === "light"
+  ) {
+
+    document.body.classList.add(
+      "light-mode"
+    );
+  }
+}
