@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CryptoDash</title>
+    <title>CryptoDash - Real Time Crypto Tracker</title>
 
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
@@ -21,21 +21,35 @@
 
 <body>
 
+    <!-- Header -->
+
     <div id="header"></div>
 
     <main class="dashboard">
 
-        <h1>🚀 Crypto Dashboard</h1>
+        <!-- Hero -->
 
-        <p>
-            Search Any Cryptocurrency
-        </p>
+        <section class="hero">
 
-        <!-- Search Box -->
+            <h1>🚀 Crypto Dashboard</h1>
 
-        <input type="text" id="search" placeholder="bitcoin, ethereum, solana...">
+            <p>
+                Track cryptocurrency prices,
+                charts, gainers, losers and
+                market trends in real time.
+            </p>
 
-        <!-- Loading Spinner -->
+        </section>
+
+        <!-- Search -->
+
+        <section class="search-section">
+
+            <input type="text" id="search" placeholder="Search Bitcoin, Ethereum, Solana...">
+
+        </section>
+
+        <!-- Loading -->
 
         <div id="spinner" class="spinner-container">
 
@@ -45,7 +59,11 @@
 
         <!-- Search Result -->
 
-        <div id="results"></div>
+        <section class="result-section">
+
+            <div id="results"></div>
+
+        </section>
 
         <!-- Favorites -->
 
@@ -57,7 +75,7 @@
 
         </section>
 
-        <!-- Chart Section -->
+        <!-- Chart -->
 
         <section class="chart-section">
 
@@ -66,6 +84,9 @@
             <canvas id="priceChart"></canvas>
 
         </section>
+
+        <!-- Top Gainers & Losers -->
+
         <section class="market-widgets">
 
             <div class="widget">
@@ -86,9 +107,51 @@
 
         </section>
 
+        <!-- USD INR Converter -->
+
+        <section class="converter-section">
+
+            <h2>💱 USD to INR Converter</h2>
+
+            <div class="converter-box">
+
+                <input type="number" id="usdInput" placeholder="Enter USD Amount">
+
+                <button id="convertBtn">
+
+                    Convert
+
+                </button>
+
+            </div>
+
+            <h3 id="inrResult">
+
+                ₹ 0.00
+
+            </h3>
+
+        </section>
+
+        <!-- Theme Toggle -->
+
+        <section class="theme-section">
+
+            <button id="themeToggle">
+
+                🌙 Toggle Dark Mode
+
+            </button>
+
+        </section>
+
     </main>
 
+    <!-- Footer -->
+
     <div id="footer"></div>
+
+    <!-- JS -->
 
     <script src="../js/loader.js"></script>
 
