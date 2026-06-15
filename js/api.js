@@ -29,3 +29,19 @@ export async function fetchHistory(
 
     return await response.json();
 }
+export async function fetchMarkets() {
+
+    const response =
+        await fetch(
+            `${API_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1`
+        );
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Market data not found"
+        );
+    }
+
+    return await response.json();
+}

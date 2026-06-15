@@ -1,6 +1,7 @@
 import {
   fetchCoin,
-  fetchHistory
+  fetchHistory,
+  fetchMarkets
 } from "./api.js";
 
 import {
@@ -20,15 +21,22 @@ const spinner =
 const favList =
   document.getElementById("favList");
 
+const gainersList =
+  document.getElementById("gainersList");
+
+const losersList =
+  document.getElementById("losersList");
+
 let chart;
 
 
-// Initial Load
+// INITIAL LOAD
 
 renderFavorites();
+loadMarketWidgets();
 
 
-// Search Coin
+// SEARCH COIN
 
 search.addEventListener(
   "keypress",
@@ -52,7 +60,6 @@ search.addEventListener(
 
         renderCoin(data);
 
-        // STEP 4
         await renderChart(coin);
 
       } catch (error) {
@@ -72,7 +79,7 @@ search.addEventListener(
 );
 
 
-// Coin Card
+// RENDER COIN CARD
 
 function renderCoin(data) {
 
@@ -105,9 +112,7 @@ function renderCoin(data) {
         </p>
 
         <button id="favBtn">
-
             ⭐ Add Favorite
-
         </button>
 
     </div>
@@ -128,7 +133,7 @@ function renderCoin(data) {
 }
 
 
-// Favorites
+// FAVORITES
 
 function renderFavorites() {
 
@@ -145,18 +150,14 @@ function renderFavorites() {
 }
 
 
-// Chart Function
+// CHART
 
-async function renderChart(
-  coin
-) {
+async function renderChart(coin) {
 
   try {
 
     const history =
-      await fetchHistory(
-        coin
-      );
+      await fetchHistory(coin);
 
     const canvas =
       document.getElementById(
@@ -211,7 +212,6 @@ async function renderChart(
 
                 tension: 0.4
               }
-
             ]
           },
 
@@ -260,5 +260,72 @@ async function renderChart(
       "Chart Error:",
       error
     );
+  }
+}
+
+
+// TOP GAINERS & LOSERS
+
+async function loadMarketWidgets() {
+
+  try {
+
+    const markets =
+      await fetchMarkets();
+
+    const gainers =
+      [...markets]
+        .sort(
+          (a, b) =>
+            b.price_change_percentage_24h -
+            a.price_change_percentage_24h
+        )
+        .slice(0, 5);
+
+    const losers =
+      [...markets]
+        .sort(
+          (a, b) =>
+            a.price_change_percentage_24h -
+            b.price_change_percentage_24h
+        )
+        .slice(0, 5);
+
+    gainersList.innerHTML =
+      gainers.map(
+        coin => `
+                <li>
+                    <span>${coin.name}</span>
+                    <span style="color:#00e676">
+                        +${coin.price_change_percentage_24h.toFixed(2)}%
+                    </span>
+                </li>
+                `
+      ).join("");
+
+    losersList.innerHTML =
+      losers.map(
+        coin => `
+                <li>
+                    <span>${coin.name}</span>
+                    <span style="color:#ff5252">
+                        ${coin.price_change_percentage_24h.toFixed(2)}%
+                    </span>
+                </li>
+                `
+      ).join("");
+
+  } catch (error) {
+
+    console.error(
+      "Market Widget Error:",
+      error
+    );
+
+    gainersList.innerHTML =
+      "<li>Unable to load gainers</li>";
+
+    losersList.innerHTML =
+      "<li>Unable to load losers</li>";
   }
 }
