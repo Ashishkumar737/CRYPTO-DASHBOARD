@@ -1,11 +1,317 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:sans-serif;
+/* =========================
+   GOOGLE FONT IMPORT
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
 }
 
-body{
-background:#081120;
-color:white;
+
+/* =========================
+   ROOT VARIABLES
+========================= */
+
+:root {
+
+    --primary: #00e5ff;
+
+    --secondary: #00ff95;
+
+    --dark-bg: #0f172a;
+
+    --dark-card: rgba(255, 255, 255, 0.08);
+
+    --text-light: #f8fafc;
+
+    --text-muted: #cbd5e1;
+
+    --danger: #ff5252;
+
+    --success: #00ff95;
+
+    --border:
+        rgba(255, 255, 255, 0.1);
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        linear-gradient(135deg,
+            #020617,
+            #0f172a,
+            #1e293b);
+
+    color: var(--text-light);
+
+    min-height: 100vh;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background:
+        linear-gradient(var(--primary),
+            var(--secondary));
+
+    border-radius: 20px;
+}
+
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+p {
+
+    color: var(--text-muted);
+}
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+}
+
+ul {
+
+    list-style: none;
+}
+
+
+/* =========================
+   IMAGES
+========================= */
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+
+    cursor: pointer;
+
+    border: none;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea,
+select {
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+
+/* =========================
+   GLASS EFFECT
+========================= */
+
+.glass {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(12px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 20px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    width: 90%;
+
+    max-width: 1400px;
+
+    margin: auto;
+}
+
+
+/* =========================
+   TEXT UTILITIES
+========================= */
+
+.text-center {
+
+    text-align: center;
+}
+
+.text-primary {
+
+    color: var(--primary);
+}
+
+.text-success {
+
+    color: var(--success);
+}
+
+.text-danger {
+
+    color: var(--danger);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+
+    animation: fadeIn 0.6s ease;
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+.light-mode {
+
+    background:
+        linear-gradient(135deg,
+            #f8fafc,
+            #e2e8f0);
+
+    color: #111827;
+}
+
+.light-mode p {
+
+    color: #475569;
+}
+
+.light-mode .glass {
+
+    background: white;
+
+    border:
+        1px solid #e2e8f0;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    body {
+
+        font-size: 14px;
+    }
+
+    h1 {
+
+        font-size: 2rem;
+    }
+
+    h2 {
+
+        font-size: 1.5rem;
+    }
+
+    .container {
+
+        width: 95%;
+    }
 }
