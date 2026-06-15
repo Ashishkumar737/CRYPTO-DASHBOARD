@@ -1,4 +1,71 @@
-.dashboard{
+.dashboard {
 
-min-height:70vh;
+    min-height: 70vh;
+}
+
+.dashboard {
+
+    min-height: 70vh;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 40px;
+
+    text-align: center;
+}
+
+#search {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+    margin-bottom: 30px;
+
+    font-size: 16px;
+}
+
+.coin-card {
+
+    background: #132238;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    margin-top: 20px;
+}
+
+.coin-card img {
+
+    width: 100px;
+
+    margin-bottom: 15px;
+}
+
+.coin-card h2 {
+
+    margin-bottom: 10px;
+}
+
+.coin-card p {
+
+    margin: 8px 0;
+}
+
+.error {
+
+    color: #ff5f5f;
+
+    margin-top: 20px;
+
+    font-size: 20px;
 }
