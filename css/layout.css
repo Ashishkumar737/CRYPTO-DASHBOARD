@@ -257,3 +257,37 @@ section {
         font-size: 14px;
     }
 }
+
+#themeToggle {
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #00ff95
+        );
+
+    color: #000;
+
+    transition: .3s;
+}
+
+#themeToggle:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 15px rgba(0,229,255,.5);
+}
