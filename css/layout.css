@@ -1,38 +1,259 @@
-.header{
+/* =========================
+   MAIN LAYOUT
+========================= */
 
-display:flex;
-justify-content:space-between;
-align-items:center;
+body {
 
-padding:20px 40px;
+    display: flex;
 
-background:#0d1b2a;
+    flex-direction: column;
+
+    min-height: 100vh;
 }
 
-nav{
 
-display:flex;
-gap:20px;
+/* =========================
+   HEADER
+========================= */
+
+.header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px 50px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
 }
 
-nav a{
 
-color:white;
-text-decoration:none;
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+
+    font-size: 1.6rem;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(90deg,
+            #00e5ff,
+            #00ff95);
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
 }
 
-.footer{
 
-text-align:center;
+/* =========================
+   NAVIGATION
+========================= */
 
-padding:20px;
+nav {
 
-background:#0d1b2a;
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
 }
 
-.dashboard{
+nav a {
 
-padding:50px;
+    position: relative;
 
-text-align:center;
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+
+    color: #00e5ff;
+}
+
+nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -5px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: #00e5ff;
+
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+
+    width: 100%;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+main {
+
+    flex: 1;
+}
+
+
+/* =========================
+   DASHBOARD WRAPPER
+========================= */
+
+.dashboard {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 40px 25px;
+}
+
+
+/* =========================
+   SECTION SPACING
+========================= */
+
+section {
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+
+    text-align: center;
+
+    padding: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(15px);
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    color: #cbd5e1;
+}
+
+.footer p {
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+
+@media (max-width: 992px) {
+
+    .header {
+
+        padding: 15px 25px;
+    }
+
+    .dashboard {
+
+        padding: 30px 20px;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+    nav {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+    .logo {
+
+        font-size: 1.3rem;
+    }
+
+    .dashboard {
+
+        padding: 20px 15px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    nav {
+
+        gap: 10px;
+    }
+
+    nav a {
+
+        font-size: 14px;
+    }
+
+    .footer {
+
+        font-size: 14px;
+    }
 }
