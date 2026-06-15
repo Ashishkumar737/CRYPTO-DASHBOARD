@@ -1,0 +1,67 @@
+const container =
+  document.getElementById("cryptoContainer");
+
+let allCoins = [];
+
+async function loadCoins() {
+
+  allCoins = await getCoins();
+
+  displayCoins(allCoins);
+}
+
+function displayCoins(coins) {
+
+  container.innerHTML = "";
+
+  coins.forEach(coin => {
+
+    container.innerHTML += `
+<div class="crypto-card">
+
+<div class="coin-top">
+<img src="${coin.image}">
+<h3>${coin.name}</h3>
+</div>
+
+<p>${coin.symbol.toUpperCase()}</p>
+
+<div class="price">
+$${coin.current_price}
+</div>
+
+<p class="${coin.price_change_percentage_24h >= 0
+        ? "green" : "red"
+      }">
+${coin.price_change_percentage_24h.toFixed(2)}%
+</p>
+
+<button
+class="favorite"
+onclick="saveFavorite('${coin.id}')">
+⭐ Add Favorite
+</button>
+
+</div>
+`;
+  });
+}
+
+document
+  .getElementById("searchInput")
+  .addEventListener("input", e => {
+
+    const term =
+      e.target.value.toLowerCase();
+
+    const filtered =
+      allCoins.filter(coin =>
+        coin.name
+          .toLowerCase()
+          .includes(term)
+      );
+
+    displayCoins(filtered);
+  });
+
+loadCoins();
