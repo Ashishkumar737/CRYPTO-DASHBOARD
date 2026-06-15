@@ -5,8 +5,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CryptoDash</title>
 
@@ -14,6 +13,9 @@
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -23,17 +25,15 @@
 
     <main class="dashboard">
 
-        <h1>Crypto Dashboard</h1>
+        <h1>🚀 Crypto Dashboard</h1>
 
         <p>
             Search Any Cryptocurrency
         </p>
 
-        <input
-            type="text"
-            id="search"
-            placeholder="bitcoin, ethereum, solana..."
-        >
+        <!-- Search Box -->
+
+        <input type="text" id="search" placeholder="bitcoin, ethereum, solana...">
 
         <!-- Loading Spinner -->
 
@@ -57,15 +57,23 @@
 
         </section>
 
+        <!-- Chart Section -->
+
+        <section class="chart-section">
+
+            <h2>📈 7 Day Price History</h2>
+
+            <canvas id="priceChart"></canvas>
+
+        </section>
+
     </main>
 
     <div id="footer"></div>
 
     <script src="../js/loader.js"></script>
 
-    <script
-        type="module"
-        src="../js/dashboard.js">
+    <script type="module" src="../js/dashboard.js">
     </script>
 
 </body>

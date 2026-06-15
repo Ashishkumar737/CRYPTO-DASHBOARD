@@ -1,4 +1,7 @@
-import { fetchCoin } from "./api.js";
+import {
+  fetchCoin,
+  fetchHistory
+} from "./api.js";
 
 import {
   saveFavorite,
@@ -17,8 +20,10 @@ const spinner =
 const favList =
   document.getElementById("favList");
 
+let chart;
 
-// Load favorites on page start
+
+// Initial Load
 
 renderFavorites();
 
@@ -47,7 +52,12 @@ search.addEventListener(
 
         renderCoin(data);
 
+        // STEP 4
+        await renderChart(coin);
+
       } catch (error) {
+
+        console.error(error);
 
         results.innerHTML = `
                     <div class="error">
@@ -62,7 +72,7 @@ search.addEventListener(
 );
 
 
-// Render Coin Card
+// Coin Card
 
 function renderCoin(data) {
 
@@ -71,8 +81,8 @@ function renderCoin(data) {
     <div class="coin-card">
 
         <img
-        src="${data.image.large}"
-        alt="${data.name}"
+            src="${data.image.large}"
+            alt="${data.name}"
         >
 
         <h2>
@@ -95,7 +105,9 @@ function renderCoin(data) {
         </p>
 
         <button id="favBtn">
+
             ⭐ Add Favorite
+
         </button>
 
     </div>
@@ -116,7 +128,7 @@ function renderCoin(data) {
 }
 
 
-// Render Favorites
+// Favorites
 
 function renderFavorites() {
 
@@ -130,4 +142,123 @@ function renderFavorites() {
           `<li>${coin}</li>`
       )
       .join("");
+}
+
+
+// Chart Function
+
+async function renderChart(
+  coin
+) {
+
+  try {
+
+    const history =
+      await fetchHistory(
+        coin
+      );
+
+    const canvas =
+      document.getElementById(
+        "priceChart"
+      );
+
+    if (!canvas) return;
+
+    const ctx =
+      canvas.getContext("2d");
+
+    if (chart) {
+
+      chart.destroy();
+    }
+
+    chart =
+      new Chart(
+        ctx,
+        {
+
+          type: "line",
+
+          data: {
+
+            labels:
+              history.prices.map(
+                p =>
+                  new Date(
+                    p[0]
+                  ).toLocaleDateString()
+              ),
+
+            datasets: [
+
+              {
+
+                label:
+                  `${coin.toUpperCase()} Price (USD)`,
+
+                data:
+                  history.prices.map(
+                    p => p[1]
+                  ),
+
+                borderColor:
+                  "#00e5ff",
+
+                borderWidth: 3,
+
+                fill: false,
+
+                tension: 0.4
+              }
+
+            ]
+          },
+
+          options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+              legend: {
+
+                labels: {
+
+                  color: "white"
+                }
+              }
+            },
+
+            scales: {
+
+              x: {
+
+                ticks: {
+
+                  color: "white"
+                }
+              },
+
+              y: {
+
+                ticks: {
+
+                  color: "white"
+                }
+              }
+            }
+          }
+        }
+      );
+
+  } catch (error) {
+
+    console.error(
+      "Chart Error:",
+      error
+    );
+  }
 }
