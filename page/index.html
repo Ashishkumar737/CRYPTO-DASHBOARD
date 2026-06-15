@@ -5,7 +5,8 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>CryptoDash</title>
 
@@ -28,9 +29,33 @@
             Search Any Cryptocurrency
         </p>
 
-        <input type="text" id="search" placeholder="bitcoin, ethereum, solana...">
+        <input
+            type="text"
+            id="search"
+            placeholder="bitcoin, ethereum, solana..."
+        >
+
+        <!-- Loading Spinner -->
+
+        <div id="spinner" class="spinner-container">
+
+            <div class="loader"></div>
+
+        </div>
+
+        <!-- Search Result -->
 
         <div id="results"></div>
+
+        <!-- Favorites -->
+
+        <section class="favorites">
+
+            <h2>⭐ My Favorites</h2>
+
+            <ul id="favList"></ul>
+
+        </section>
 
     </main>
 
@@ -38,8 +63,10 @@
 
     <script src="../js/loader.js"></script>
 
-    <script type="module" src="../js/dashboard.js"></script>
-
+    <script
+        type="module"
+        src="../js/dashboard.js">
+    </script>
 
 </body>
 

@@ -1,10 +1,29 @@
 import { fetchCoin } from "./api.js";
 
+import {
+  saveFavorite,
+  loadFavorites
+} from "./utils.js";
+
 const search =
   document.getElementById("search");
 
 const results =
   document.getElementById("results");
+
+const spinner =
+  document.getElementById("spinner");
+
+const favList =
+  document.getElementById("favList");
+
+
+// Load favorites on page start
+
+renderFavorites();
+
+
+// Search Coin
 
 search.addEventListener(
   "keypress",
@@ -18,6 +37,8 @@ search.addEventListener(
           .trim();
 
       if (!coin) return;
+
+      spinner.style.display = "flex";
 
       try {
 
@@ -34,9 +55,14 @@ search.addEventListener(
                     </div>
                 `;
       }
+
+      spinner.style.display = "none";
     }
   }
 );
+
+
+// Render Coin Card
 
 function renderCoin(data) {
 
@@ -68,7 +94,40 @@ function renderCoin(data) {
             ${data.market_data.price_change_percentage_24h.toFixed(2)}%
         </p>
 
+        <button id="favBtn">
+            ⭐ Add Favorite
+        </button>
+
     </div>
 
     `;
+
+  document
+    .getElementById("favBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        saveFavorite(data.id);
+
+        renderFavorites();
+      }
+    );
+}
+
+
+// Render Favorites
+
+function renderFavorites() {
+
+  const favorites =
+    loadFavorites();
+
+  favList.innerHTML =
+    favorites
+      .map(
+        coin =>
+          `<li>${coin}</li>`
+      )
+      .join("");
 }

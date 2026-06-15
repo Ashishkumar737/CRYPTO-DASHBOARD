@@ -1,4 +1,76 @@
-h1{
+h1 {
 
-margin-bottom:20px;
+    margin-bottom: 20px;
+}
+
+.spinner-container {
+
+    display: none;
+
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.loader {
+
+    width: 50px;
+    height: 50px;
+
+    border: 5px solid #ddd;
+
+    border-top: 5px solid cyan;
+
+    border-radius: 50%;
+
+    animation:
+        spin 1s linear infinite;
+}
+
+@keyframes spin {
+
+    100% {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+.favorites {
+
+    margin-top: 40px;
+
+    background: #132238;
+
+    padding: 20px;
+
+    border-radius: 15px;
+}
+
+.favorites ul {
+
+    list-style: none;
+}
+
+.favorites li {
+
+    padding: 10px;
+    border-bottom: 1px solid #23374f;
+}
+
+#favBtn {
+
+    margin-top: 15px;
+
+    padding: 10px 15px;
+
+    border: none;
+
+    background: #00c853;
+
+    color: white;
+
+    border-radius: 10px;
+
+    cursor: pointer;
 }
